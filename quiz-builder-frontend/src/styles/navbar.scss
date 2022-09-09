@@ -1,0 +1,59 @@
+.navigation {
+  height: $nav-height;
+  background: $nav-background;
+  box-shadow: 1px 1px 2px rgba(gray, 0.3);
+
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: $content-width;
+    margin: 0 auto;
+
+    .brand {
+      padding-left: 20px;
+      line-height: $nav-height;
+      text-transform: uppercase;
+      font-size: 1.4em;
+
+      a,
+      a:visited {
+        color: $nav-font-color;
+        text-decoration: none;
+      }
+    }
+
+    .nav-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        float: left;
+        position: relative;
+
+        a {
+          display: block;
+          padding: 10px 20px 0 20px;
+          line-height: 50px;
+          background: $nav-background;
+          color: $nav-font-color;
+          text-decoration: none;
+
+          &:hover {
+            color: #249cec;
+          }
+        }
+      }
+    }
+  }
+}
+
+.active {
+  border-bottom: 2px solid $link-hover-color;
+}
+
+@media screen and (min-width: $breakpoint) {
+  .nav-list {
+    display: block !important;
+  }
+}

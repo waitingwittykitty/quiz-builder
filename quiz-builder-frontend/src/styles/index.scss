@@ -1,7 +1,29 @@
+@import './variables.scss';
+@import './card.scss';
+@import './form.scss';
+@import './navbar.scss';
+@import './auth.scss';
+
 .h-full {
   height: 100vh;
 }
 
 .w-full {
   width: 100%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+}
+
+.relative {
+  position: relative;
+}
+
+.flex {
+  display: flex;
 }

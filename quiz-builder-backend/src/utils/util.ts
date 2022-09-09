@@ -17,3 +17,9 @@ export const isEmpty = (value: string | number | object): boolean => {
     return false;
   }
 };
+
+export const createPermalink = () => {
+  return Math.round(Math.random() * 100000000 + 1000000000)
+    .toString(36)
+    .toUpperCase();
+};

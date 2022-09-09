@@ -27,8 +27,7 @@ class App {
   }
 
   public listen() {
-    this.app.listen(this.port, (...params) => {
-      console.log({ params });
+    this.app.listen(this.port, () => {
       logger.info(`App is listening on http://localhost:${this.port}/`);
     });
   }

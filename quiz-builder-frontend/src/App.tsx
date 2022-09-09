@@ -6,6 +6,7 @@ import 'react-toastify/scss/main.scss';
 import Navbar from './layouts/navbar';
 import SignIn from './pages/sign-in';
 import SignUp from './pages/sign-up';
+import Quizzes from './pages/quizzes';
 import Spinner from './components/spinner/spinner';
 import authService from './services/auth.service';
 import { useAuthContext } from './context/auth-context';
@@ -42,6 +43,7 @@ function App() {
 
           {currentUser ? (
             <Routes>
+              <Route path="quizzes" element={<Quizzes />} />
               <Route path="*" element={<Navigate to="quizzes" />} />
             </Routes>
           ) : (

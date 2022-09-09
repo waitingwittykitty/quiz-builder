@@ -1,0 +1,31 @@
+.button {
+  background-color: #3d57b1;
+  border-radius: 3px;
+  padding: 10px 15px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #fff;
+  position: relative;
+  text-transform: uppercase;
+  top: -3px;
+  opacity: 0.75;
+  line-height: 20px;
+  display: inline-block;
+  cursor: pointer;
+  border: none;
+  margin: auto;
+
+  &:hover {
+    opacity: 1;
+    background-color: #3a417a;
+  }
+
+  &:disabled {
+    pointer-events: none;
+    background-color: #d3d5f2;
+  }
+
+  &.active {
+    background-color: #1b1341;
+  }
+}

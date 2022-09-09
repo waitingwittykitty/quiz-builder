@@ -4,12 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { AuthContextProvider } from './context/auth-context';
+import { QuizContextProvider } from './context/quiz-context';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <BrowserRouter>
     <AuthContextProvider>
-      <App />
+      <QuizContextProvider>
+        <App />
+      </QuizContextProvider>
     </AuthContextProvider>
   </BrowserRouter>,
 );

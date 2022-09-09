@@ -1,0 +1,44 @@
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transition: ease all 0.3s;
+
+  &.opened {
+    pointer-events: all;
+    opacity: 1;
+  }
+
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%;
+    border-radius: 4px;
+  }
+
+  .close {
+    color: white;
+    float: right;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px 8px;
+  }
+
+  .close:hover,
+  .close:focus {
+    text-decoration: none;
+    cursor: pointer;
+  }
+}

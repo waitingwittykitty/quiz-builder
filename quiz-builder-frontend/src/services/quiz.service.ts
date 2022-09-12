@@ -1,5 +1,6 @@
 import instance from './instance';
-import { Quiz, QuizQuery } from '../context/quiz-context';
+import { Answer, Quiz, QuizQuery } from '../context/quiz-context';
+import { QuizFormValues } from '../components/quiz-form/quiz-form';
 
 class QuizService {
   getQuizCount() {
@@ -8,8 +9,17 @@ class QuizService {
   getQuizzes(query: QuizQuery) {
     return instance.get('/quizzes', { params: query });
   }
+  getQuizById(quizId: string) {
+    return instance.get(`/quizzes/${quizId}`);
+  }
+  addQuiz(data: QuizFormValues) {
+    return instance.post('/quizzes', data);
+  }
   publishQuiz(quiz: Quiz) {
     return instance.patch(`/quizzes/${quiz._id}/publish`);
+  }
+  updateQuiz(quiz: Quiz, data: QuizFormValues) {
+    return instance.put(`/quizzes/${quiz._id}`, data);
   }
   deleteQuiz(quiz: Quiz) {
     return instance.delete(`/quizzes/${quiz._id}`);

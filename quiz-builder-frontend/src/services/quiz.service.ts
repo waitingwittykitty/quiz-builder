@@ -21,6 +21,12 @@ class QuizService {
   updateQuiz(quiz: Quiz, data: QuizFormValues) {
     return instance.put(`/quizzes/${quiz._id}`, data);
   }
+  getQuizByPermalink(permalink: string) {
+    return instance.get(`/quizzes/public/${permalink}`);
+  }
+  checkAnswer(permalink: string, data: { answer: Answer[] }) {
+    return instance.post(`/quizzes/public/${permalink}`, data);
+  }
   deleteQuiz(quiz: Quiz) {
     return instance.delete(`/quizzes/${quiz._id}`);
   }

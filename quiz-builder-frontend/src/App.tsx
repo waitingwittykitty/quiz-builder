@@ -7,6 +7,9 @@ import Navbar from './layouts/navbar';
 import SignIn from './pages/sign-in';
 import SignUp from './pages/sign-up';
 import Quizzes from './pages/quizzes';
+import QuizAdd from './pages/quiz-add';
+import QuizEdit from './pages/quiz-edit';
+import QuizTest from './pages/quiz-test';
 import Spinner from './components/spinner/spinner';
 import authService from './services/auth.service';
 import { useAuthContext } from './context/auth-context';
@@ -44,12 +47,16 @@ function App() {
           {currentUser ? (
             <Routes>
               <Route path="quizzes" element={<Quizzes />} />
+              <Route path="quizzes/add" element={<QuizAdd />} />
+              <Route path="quizzes/:id/edit" element={<QuizEdit />} />
+              <Route path="quizzes/public/:permalink" element={<QuizTest />} />
               <Route path="*" element={<Navigate to="quizzes" />} />
             </Routes>
           ) : (
             <Routes>
               <Route path="sign-in" element={<SignIn />} />
               <Route path="sign-up" element={<SignUp />} />
+              <Route path="quizzes/public/:permalink" element={<QuizTest />} />
               <Route path="*" element={<Navigate to="sign-in" />} />
             </Routes>
           )}

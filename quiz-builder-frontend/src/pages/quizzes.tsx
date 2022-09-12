@@ -15,18 +15,21 @@ import quizService from '../services/quiz.service';
 
 function Quizzes() {
   const navigate = useNavigate();
-  const [searchParams, setSearchParams] = useSearchParams();
-  const page = Number(searchParams.get('page')) || 1;
-  const perPage = Number(searchParams.get('height')) || 10;
   const { quizzes, total, setQuizzes, setTotal } = useQuizContext();
   const [loadingQuizzes, setLoadingQuizzes] = useState(false);
   const [loadingQuizCount, setLoadingQuizCount] = useState(false);
   const loading = loadingQuizzes || loadingQuizCount;
   const [isConfirmOpened, setIsConfirmOpened] = useState(false);
   const [selectedQuiz, setSelectedQuiz] = useState<Quiz | null>(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const perPage = useMemo(() => Number(searchParams.get('height')) || 10, [searchParams]);
   const pageCount = useMemo(() => {
     return Math.ceil(total / perPage);
   }, [total, perPage]);
+  const page = useMemo(
+    () => Math.min(Number(searchParams.get('page')), pageCount) || 1,
+    [searchParams, pageCount],
+  );
 
   const getQuizzes = useCallback(async () => {
     setLoadingQuizzes(true);
@@ -101,6 +104,7 @@ function Quizzes() {
       try {
         await quizService.deleteQuiz(selectedQuiz);
         await getQuizzes();
+        setTotal(Math.max(0, total - 1));
         setLoadingQuizzes(false);
         toast.success('Removed successfully');
       } catch (err) {

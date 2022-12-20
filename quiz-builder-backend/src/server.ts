@@ -9,3 +9,5 @@ validateEnv();
 const app = new App([new IndexRoute(), new AuthRoute(), new QuizzesRoute()]);
 
 app.listen();
+
+export default app;

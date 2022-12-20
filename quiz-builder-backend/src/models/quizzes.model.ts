@@ -3,11 +3,25 @@ const uniqueValidator = require('mongoose-unique-validator');
 import { Quiz } from '@interfaces/quizzes.interface';
 import { isArray, isPositive } from 'class-validator';
 
-const quizSchema: Schema = new Schema({
+interface IQuestion {
+  question: string;
+  type: string;
+  answers: string[];
+  correctAnswer: Schema.Types.Mixed;
+}
+
+interface IQuiz {
+  title: string;
+  permalink: string;
+  author: Schema.Types.ObjectId;
+  questions: IQuestion[];
+}
+
+const quizSchema: Schema = new Schema<IQuiz>({
   title: {
     type: String,
     required: true,
-    unique: 'Title should be unique',
+    unique: true,
   },
   permalink: {
     type: String,
